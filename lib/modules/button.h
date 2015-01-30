@@ -1,5 +1,6 @@
 #pragma once
 #include "label.h"
+#include "../components/string.h"
 
 namespace guik {
 	
@@ -64,6 +65,8 @@ protected:
 	Dword id;
 	Dword color;
 	bool hidden;
+
+	bool enableLabel;
 
 	int type;
 };

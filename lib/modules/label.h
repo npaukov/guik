@@ -32,6 +32,7 @@ public:
 	void setText(mstring text);
 	char* getText();
 	mstring getTextString();
+	int getLength();
 
 protected:
 	void Release();

@@ -7,7 +7,7 @@
 namespace guik {
 
 Label::Label(char* text, int x, int y, int color) : x(x),y(x),id(0),color(color),hidden(false),fontType(0x80),text(text) {
-
+	
 }
 
 void Label::draw() {
@@ -68,7 +68,11 @@ char* Label::getText() {
 }
 
 mstring Label::getTextString() {
-	return (mstring)this->text;
+	return this->text;
+}
+
+int Label::getLength() {
+	return this->text.getLength();
 }
 
 int Label::getType() {

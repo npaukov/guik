@@ -16,9 +16,9 @@ public:
 		};
 
 		void onClick() {
-			//Button* btn = ApplicationWindow::getWindow()->btn;
-			//btn->text->setPaddingLeft(btn->text->getPaddingLeft()-1);
-			//btn->text->setPaddingTop(btn->text->getPaddingTop()-1);
+			Button* btn = ApplicationWindow::getWindow()->btn;
+			btn->text->setPaddingLeft(btn->text->getPaddingLeft()-1);
+			btn->text->setPaddingTop(btn->text->getPaddingTop()-1);
 			ApplicationWindow::getWindow()->update();
 		};
 	};
@@ -30,9 +30,9 @@ public:
 		};
 
 		void onClick() {
-			//Button* btn = ApplicationWindow::getWindow()->btn;
-			//btn->text->setPaddingLeft(btn->text->getPaddingLeft()+1);
-			//btn->text->setPaddingTop(btn->text->getPaddingTop()+1);
+			Button* btn = ApplicationWindow::getWindow()->btn;
+			btn->text->setPaddingLeft(btn->text->getPaddingLeft()+1);
+			btn->text->setPaddingTop(btn->text->getPaddingTop()+1);
 			ApplicationWindow::getWindow()->update();
 		};
 	};
@@ -43,11 +43,9 @@ public:
 	Plus* plus;
 
 	void start() {
-		class hello {
-
-		};
 		btn = new guik::Button(5, 100, 100);
-		//btn->setText("Hello, button!");
+		btn->setText("Hello, button!");
+		btn->text->setColor(COLOR_RED);
 
 		minus = new Minus();
 		plus = new Plus();

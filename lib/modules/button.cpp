@@ -76,7 +76,7 @@ int Button::getSizeY() {
 }
 
 void Button::setText(char* text) {
-	if (!this->text) this->text = new ButtonLabel(text);
+	this->enableLabel = true;
 	this->text->setText(text);
 }
 
@@ -101,29 +101,27 @@ bool Button::isHidden() {
 }
 
 Button::Button(int id, int x, int y, int sizeX, int sizeY, int color) : id(id), x(x),y(y), sizeX(sizeX), sizeY(sizeY), 
-				color(color), hidden(false), type(CONTROL_BUTTON)
+				color(color), hidden(false), enableLabel(false), type(CONTROL_BUTTON)
 {
-	this->text = 0;
+	this->text = new ButtonLabel("Hello");
 }
 
 void Button::draw() {
 	if (!hidden) {
-		if (this->text) {
+		if (this->enableLabel) {
 			// Ширина кнопки
-			// Отступ слева - 4px + длина строки (2px на символ) + отступ справа 4px
-			this->text->getPaddingLeft();
+			// Отступ слева
+			this->sizeX = this->text->getPaddingLeft() + gstrlen(this->text->getText())*6 + this->text->getPaddingRight();
 
-			sizeX = text->getPaddingLeft() + this->text->getTextString().getLength()*6 + text->getPaddingRight();
-			
 			// Высота кнопки
-			// Отступ сверху - 4px + высота строки (4px) + отступ снизу 4px
-			sizeY = text->getPaddingTop() + 5 + text->getPaddingRight();
+			// Отступ сверху
+			this->sizeY = this->text->getPaddingTop() + 5 + this->text->getPaddingRight();
 
-			text->setX(x+text->getPaddingLeft());
-			text->setY(y+text->getPaddingTop());
+			this->text->setX(x+this->text->getPaddingLeft());
+			this->text->setY(y+this->text->getPaddingTop());
 
 			Draw::button(x, y, sizeX, sizeY, id, color );
-			text->draw();
+			this->text->draw();
 		}
 		else {
 			Draw::button(x, y, sizeX, sizeY, id, color );
